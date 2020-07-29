@@ -3,14 +3,19 @@
     <h1>Calculator</h1>
     <br />
     <div class="container wrap">
-      <input class="display" />
+      <input class="display text-right" style="font-size: 18px;" :value="displayVal"/>
       <br />
       <button
         v-for="b in buttons"
         :key="b.id"
-        :style="[b.id === 1 ? lrgBtn: regBtn, b.number === true ? number: operator]"
+        :style="[regBtn, b.number === true ? number: operator]"
         class="btn"
       >{{b.name}}</button>
+    </div>
+    <br>
+    <div>
+      <h4>Display active functions here:</h4>
+      <p>{{displayVal}}</p>
     </div>
   </div>
 </template>
@@ -20,117 +25,127 @@ export default {
   data: function() {
     return {
       displayVal: 0,
-      lrgBtn: {
-        width: "40.5%",
-        margin: "3px"
-      },
       regBtn: {
         width: "20%",
         margin: "3px"
       },
       number: {
-        backgroundColor: "yellow"
+        backgroundColor: "lightBlue"
       },
       operator: {
-        backgroundColor: "pink"
+        backgroundColor: "lightGray"
       },
       buttons: [
         {
           id: 1,
-          name: "AC",
-          number: false
-        },
-        {
-          id: 2,
-          name: "C",
-          number: false
-        },
-        {
-          id: 3,
-          name: "/",
-          number: false
-        },
-        {
-          id: 4,
           name: "7",
           number: true
         },
         {
-          id: 5,
+          id: 2,
           name: "8",
           number: true
         },
         {
-          id: 6,
+          id: 3,
           name: "9",
           number: true
         },
-        {
-          id: 7,
-          name: "x",
+          {
+          id: 4,
+          name: "/",
           number: false
         },
+        
         {
-          id: 8,
+          id: 5,
           name: "4",
           number: true
         },
         {
-          id: 9,
+          id: 6,
           name: "5",
           number: true
         },
         {
-          id: 10,
+          id: 7,
           name: "6",
           number: true
         },
         {
-          id: 11,
-          name: "-",
+          id: 8,
+          name: "x",
           number: false
         },
+       
         {
-          id: 12,
+          id: 9,
           name: "1",
           number: true
         },
         {
-          id: 13,
+          id: 10,
           name: "2",
           number: true
         },
         {
-          id: 14,
+          id: 11,
           name: "3",
           number: true
         },
-        {
+         {
+          id: 12,
+          name: "-",
+          number: false
+        },
+         {
+          id: 13,
+          name: "C",
+          number: false
+        },
+         {
+          id: 14,
+          name: "0",
+          number: true
+        },
+         {
           id: 15,
-          name: "+",
+          name: "=",
           number: false
         },
         {
           id: 16,
-          name: "\u00b1",
+          name: "+",
           number: false
         },
-        {
-          id: 17,
-          name: "0",
-          number: true
+      ],
+      methods: {
+        minus: function(){
+          console.log('clicked minus');
+          
         },
-        {
-          id: 18,
-          name: ".",
-          number: false
+        add: function(){
+          console.log('clicked add');
+          
         },
-        {
-          id: 19,
-          name: "=",
-          number: false
-        }
-      ]
+        divide: function(){
+          console.log('clicked divide');
+          
+        },
+        multiply: function(){
+          console.log('clicked multiply');
+          
+        },
+        equals: function(){
+          console.log('clicked equals');
+          
+        },
+        clear: function(){
+          console.log('clicked clear');
+          
+        },
+        
+      }
     };
   }
 };
@@ -139,18 +154,13 @@ export default {
 <style scoped>
 .wrap {
   border: 1px;
-  width: 50%;
+  width: 30%;
 }
 
 .display {
-  width: 82%;
+  width: 84%;
 }
-.buttons.number {
-  background-color: green;
-}
-.operator {
-  background-color: pink !important;
-}
+
 h3 {
   margin: 40px 0 0;
 }
