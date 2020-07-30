@@ -23,7 +23,7 @@
       <div @click="minus" class="btn btn-warning btns operator">&minus;</div>
     </div>
     <br />
-    <h5>{{calculation.current}}</h5>
+    <h5>{{[calculation.previous, calculation.symbol, calculation.current, calculation.end, calculation.operator]}}</h5>
     <button v-on:click="sendMessage('hello')">Send Message</button>
   </div>
 </template>
